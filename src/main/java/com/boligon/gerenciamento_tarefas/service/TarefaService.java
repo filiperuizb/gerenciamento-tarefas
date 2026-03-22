@@ -31,4 +31,14 @@ public class TarefaService {
         tarefaRepository.deleteById(id);
     }
 
+    public TarefaEntity atualizar(Long id, TarefaEntity atualizarTarefa) {
+        TarefaEntity entity = tarefaRepository.findById(id).get();
+
+        entity.setDescription(atualizarTarefa.getDescription());
+        entity.setConcluida(atualizarTarefa.getConcluida());
+        entity.setDueDate(atualizarTarefa.getDueDate());
+
+        return tarefaRepository.save(entity);
+    }
+
 }
